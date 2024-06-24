@@ -16,6 +16,10 @@ int main(){
         cout<<"Saliendo..."<<endl;
         system("pause");
         break;
+    default:
+        cout<<" Ingresa una opcion correcta "<<endl;
+        system("pause");
+        break;
     }
 
     return 0;
