@@ -1,32 +1,33 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
-void eleccionUsu(int);
+int eleccionUsu();
+int eleccionCompu();
 
 int main(){
     int usuario, computadora;
-
-    cout<<"Elije una opcion:  (0) Piedra (1) Papel (2) Tijera: ";cin>>usuario;
-    eleccionUsu(usuario);
-
+    usuario = eleccionUsu();
+    
+    
+    computadora = eleccionCompu();
+    
     return 0;
 }
 
-void eleccionUsu(int usuario){
+int eleccionUsu(){
+    int usuario;
+    do{
+        cout<<"Elije una opcion:  (1) Piedra (2) Papel (3) Tijera: ";cin>>usuario;
+    } while (usuario != 1 && usuario != 2 && usuario != 3);
     
-    switch (usuario){
-    case 0:
-        cout<<"Usuario: Piedra";
-        break;
-    case 1:
-        cout<<"Usuario: Papel";
-        break;   
-    case 2:
-        cout<<"Usuario: Tijera";
-        break;     
-    default:
-        cout<<"Ingrese una opcion correcta";
-        break;
-    }
+    return usuario;
+}
+
+int eleccionCompu(){
+    int num;
+    num = rand() % 3 + 1;
+
+    return num;
 }
