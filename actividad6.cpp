@@ -6,17 +6,20 @@ using namespace std;
 int eleccionUsu();
 int eleccionCompu();
 void mostrarEleccion(int);
+void ganadorRonda(int, int, int&, int&);
 
 int main(){
-    int usuario, computadora;
-    usuario = eleccionUsu();
-    cout<<"Usuario: ";
-    mostrarEleccion(usuario);
-    
-    computadora = eleccionCompu();
-    cout<<"Computadora: ";
-    mostrarEleccion(computadora);
-    
+    int usuario, computadora, victoriaUsu = 0, victoriaCompu = 0;
+        usuario = eleccionUsu();
+        cout<<"Usuario: ";
+        mostrarEleccion(usuario);
+        
+        computadora = eleccionCompu();
+        cout<<"Computadora: ";
+        mostrarEleccion(computadora);
+
+        ganadorRonda(usuario, computadora, victoriaUsu, victoriaCompu);
+        
     return 0;
 }
 
@@ -30,7 +33,7 @@ void mostrarEleccion(int op){
             break;   
         case 3:
         cout<<"Tijera"<<endl;
-            break;     
+            break;
         }
 }
 
@@ -48,4 +51,21 @@ int eleccionCompu(){
     num = rand() % 3 + 1;
 
     return num;
+}
+
+void ganadorRonda(int usuario, int computadora, int& victoriaUsu, int& victoriaCompu){;
+    
+    if (usuario == computadora) {
+        cout<<"Ronda empate"<<endl;
+    }else if ((usuario == 1 && computadora == 3) ||
+               (usuario == 2 && computadora == 1) ||
+               (usuario == 3 && computadora == 2)) {
+        cout<<"Ganaste esta ronda"<<endl;
+        victoriaUsu++;
+    }else {
+        cout<<"La computadora gana esta ronda"<<endl;
+        victoriaCompu++;
+    }
+    cout<<"Usuario - " <<victoriaUsu<<endl;
+    cout<<"Computadora - " <<victoriaCompu<<endl;
 }
